@@ -1,4 +1,4 @@
-package com.example.google_task.database.datastore
+package com.example.google_task.datastore
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
 

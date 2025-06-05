@@ -1,4 +1,4 @@
-package com.example.google_task.database.datastore.repository
+package com.example.google_task.repository
 
 import android.icu.util.Calendar
 import com.example.google_task.database.dao.TaskDAO
@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 
 class TaskRepoImpl (
     private val taskDAO: TaskDAO
-) : TaskRepo{
+) : TaskRepo {
     override suspend fun getTaskCollections(): List<TaskCollection>  = withContext(Dispatchers.IO){
         taskDAO.getTaskCollection()
     }
@@ -21,11 +21,7 @@ class TaskRepoImpl (
     override suspend fun addTaskCollection(title: String): TaskCollection? {
         val taskCollection = TaskCollection(title = title, updateAt = Calendar.getInstance().timeInMillis)
         val id = taskDAO.insertTaskCollection(taskCollection)
-        return if (id > 0) {
-            taskCollection.copy(id = taskCollection.id)
-        }
-        else {
-            null
-        }
+        return if (id > 0) taskCollection else null
+
     }
 }

@@ -1,4 +1,4 @@
-package com.example.google_task.database.datastore.repository
+package com.example.google_task.repository
 
 import com.example.google_task.database.entity.TaskCollection
 import com.example.google_task.database.entity.TaskEntity

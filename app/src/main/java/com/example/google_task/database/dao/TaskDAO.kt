@@ -12,10 +12,10 @@ import com.example.google_task.database.entity.TaskEntity
 @Dao
 interface TaskDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTaskCollection(taskCollection: TaskCollection) : Int
+    suspend fun insertTaskCollection(taskCollection: TaskCollection) : Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTask(task: TaskEntity) : Int
+    suspend fun insertTask(task: TaskEntity) : Long
 
     @Query("SELECT * FROM task_collection")
     suspend fun getTaskCollection(): List<TaskCollection>
